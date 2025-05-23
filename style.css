@@ -7,9 +7,9 @@ body{
   display:flex;
   justify-content:center;
   padding:30px;
-  font-family:'Segoe UI', system-ui, sans-serif;
+  font-family:'Segoe UI',system-ui,sans-serif;
 
-  /* 🎨 Fondo degradado diagonal Pulqui */
+  /* 🎨 Fondo degradado diagonal (azul → violeta) */
   background:linear-gradient(130deg,#000080 0%, #3d3dbf 45%, #5252e3 100%);
   background-attachment:fixed;
   color:#000;
@@ -17,48 +17,34 @@ body{
 
 /* Tarjeta “glass” */
 .card{
-  background:rgba(255,255,255,.85);   /* efecto vidrio */
+  background:rgba(255,255,255,.85);
   backdrop-filter:blur(4px);
-  padding:32px 38px;
-  max-width:620px;                    /* +60px para más aire */
+  padding:24px 20px;        /* mobile-first (más compacto)  */
   width:100%;
+  max-width:620px;
   border-radius:18px;
   box-shadow:0 10px 28px rgba(0,0,0,.25);
 }
 
 /* Logo */
-.logo{
-  display:block;
-  width:250px;
-  margin:0 auto 10px;
-}
+.logo{display:block;width:250px;margin:0 auto 10px;}
 
-/* Títulos y subtítulo */
+/* Títulos */
 h1{
-  font-size:28px;                     /* antes 26 */
+  font-size:28px;
   margin:0 0 6px;
   text-align:center;
   color:#d1141e;
 }
 h1 span{color:#000;}
-.sub{
-  margin:0 0 24px;
-  text-align:center;
-  color:#555;
-  font-size:16px;                     /* antes 14 */
-}
+.sub{margin:0 0 24px;text-align:center;color:#555;font-size:16px}
 
 /* Preguntas */
 fieldset{border:none;margin:26px 0 18px;padding:0}
-legend  {font-size:20px;font-weight:600;margin-bottom:10px;color:#000000}
+legend{font-size:20px;font-weight:600;margin-bottom:10px;color:#000}
 
-/* Comentarios textarea */
-label[for="comentarios"]{
-  display:block;
-  margin:24px 0 8px;
-  font-weight:600;
-  font-size:18px;
-}
+/* Comentarios */
+label[for="comentarios"]{display:block;margin:24px 0 8px;font-weight:600;font-size:18px}
 textarea{
   width:100%;
   min-height:100px;
@@ -70,61 +56,66 @@ textarea{
 }
 
 /* ———————————————————————————
-   2. Chips radio 0-10 (accesibles)
+   2. Chips 0-10
 ——————————————————————————— */
-.chip-group{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.chip{
-  position:relative;
-  cursor:pointer;
-}
-.chip input{
-  appearance:none;
-  position:absolute;
-  inset:0;
-}
+.chip-group{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start}
+.chip{position:relative;cursor:pointer}
+.chip input{appearance:none;position:absolute;inset:0}
 .chip span{
   display:block;
-  padding: 8px 14px;                  /* antes 6x10 */
-  border:2px solid #FF0000;              /* contraste mayor */
+  padding:8px 14px;
+  border:2px solid #ff5c33;   /* naranja contorno */
   border-radius:28px;
-  font-size:18px;                     /* antes 14 */
+  font-size:18px;
   color:#191970;
   transition:.15s;
 }
-/* estado seleccionado */
 .chip input:checked + span{
-  background:#c40011;                 /* rojo más oscuro y WCAG AA */
+  background:#c40011;
   border-color:#c40011;
   color:#fff;
 }
 
 /* ———————————————————————————
-   3. Botón enviar
+   3. Botón
 ——————————————————————————— */
 .btn{
   background:#d1141e;
   color:#fff;
   border:none;
-  font-size:18px;                     /* antes 16 */
-  padding:14px 28px;
+  font-size:18px;
+  padding:14px;
   border-radius:26px;
   margin-top:28px;
   width:100%;
   cursor:pointer;
-  transition:transform .15s, box-shadow .15s;
+  transition:transform .15s,box-shadow .15s;
 }
-.btn:hover{
-  transform:scale(1.04);
-  box-shadow:0 4px 12px rgba(0,0,0,.18);
-}
+.btn:hover{transform:scale(1.04);box-shadow:0 4px 12px rgba(0,0,0,.18)}
 
 /* ———————————————————————————
-   4. Preferencias de alto contraste (opcional)
+   4. Alto contraste (opcional)
 ——————————————————————————— */
 @media (prefers-contrast: more){
   .chip span{border-color:#000;}
+}
+
+/* ———————————————————————————
+   5. Breakpoint ≥ 640 px (tablet / small laptop)
+——————————————————————————— */
+@media (min-width:640px){
+
+  body{padding:40px;}                   /* más aire */
+  .card{padding:32px 38px;}             /* vuelve al padding amplio */
+
+  .chip span{padding:10px 18px;font-size:18px;}
+
+  .btn{font-size:18px;padding:16px 24px;max-width:320px;margin:24px auto 0;}
+}
+
+/* ———————————————————————————
+   6. Breakpoint ≥ 960 px (desktop grande)
+——————————————————————————— */
+@media (min-width:960px){
+  .card{max-width:720px;}               /* tarjeta más ancha */
 }
