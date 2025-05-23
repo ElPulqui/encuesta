@@ -119,3 +119,35 @@ textarea{
 @media (min-width:960px){
   .card{max-width:720px;}               /* tarjeta más ancha */
 }
+/* =========================================================
+   7. Breakpoint móvil angosto  ≤ 480 px
+========================================================= */
+@media (max-width:480px){
+
+  /* Tarjeta: sin esquinas redondeadas y ocupa 100 % */
+  .card{
+    padding:20px 16px;
+    max-width:none;          /* ancha como el viewport */
+    border-radius:0;
+    box-shadow:none;         /* sombra innecesaria al full-screen */
+  }
+
+  /* Títulos un poco más grandes para legibilidad */
+  h1{font-size:24px;}
+  legend{font-size:18px;}
+
+  /* Chips más grandes (tocar con dedo) y gap menor */
+  .chip-group{gap:6px;}
+  .chip span{
+    padding:10px 14px;       /* botón cómodo */
+    font-size:17px;
+  }
+
+  /* Texto del textarea y botón */
+  textarea{font-size:16px;padding:10px;}
+  .btn{
+    font-size:17px;
+    padding:14px;
+    margin-top:24px;
+  }
+}
