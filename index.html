@@ -3,30 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <title>Encuesta de Satisfacción – El Pulqui</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Estilos -->
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 30px 35px;
+      max-width: 720px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    }
+
+    .logo { text-align: center; margin-bottom: 20px; }
+    .logo img { width: 160px; }
+
+    h1       { color: #d1141e; margin: 0 0 10px; }
+    p.intro  { color: #333;   margin-bottom: 25px; }
+
+    fieldset { border: none; margin: 22px 0 10px; padding: 0; }
+    legend   { font-weight: 600; margin-bottom: 8px; }
+
+    /* Radios 0-10 */
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .radio-group label {
+      font-weight: normal;
+      color: #222;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      margin-top: 8px;
+    }
+
+    button {
+      background-color: #d1141e;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 22px;
+    }
+    button:hover { background-color: #a50f18; }
+  </style>
 </head>
 
 <body>
   <div class="container">
     <!-- Logo -->
     <div class="logo">
-      <img src="https://github.com/ElPulqui/promos-web/blob/main/logo.png?raw=true" alt="El Pulqui">
+      <img src="https://raw.githubusercontent.com/maxraffin/elpulqui-assets/main/logo-pulqui.png" alt="El Pulqui">
     </div>
 
     <h1>Tu opinión mejora nuestro servicio</h1>
-    <p>Completá esta breve encuesta (menos de 1 minuto) 🙌</p>
+    <p class="intro">Completá esta breve encuesta (menos de 1 minuto) 🙌</p>
 
     <!-- FORMULARIO -->
-    <form action="https://script.google.com/macros/s/AKfycbzS21wTfIm0qdzmso2IQw8Vd5U-XbGVrlA0VlyuQt0F7O1iKF3wvAHvqDZ9_z2IqCOE/exec" method="POST">
+    <form action="https://script.google.com/macros/s/AKfycbzBGoJj4UOfIoW1u1H2YNIQXGifV_QaOUmu631GvOiY1UmOKP71slYkhyqtrGp_BpbI/exec" method="POST">
 
-      <!-- GENERADOR DE GRUPOS RADIO 0-10 -->
       <!-- 1) Proceso de compra -->
       <fieldset>
         <legend>1. ¿Qué te pareció el proceso de compra?</legend>
         <div class="radio-group">
-          <!-- radios del 0 al 10 -->
-          <!-- puedes duplicar este bloque según necesites -->
-          <!-- Se repite con un for en backend normalmente, aquí lo ponemos manualmente -->
+          <!-- radios 0-10 -->
           <label><input type="radio" name="compra" value="0" required>0</label>
           <label><input type="radio" name="compra" value="1">1</label>
           <label><input type="radio" name="compra" value="2">2</label>
@@ -45,7 +102,6 @@
       <fieldset>
         <legend>2. ¿Cómo fue la atención del conductor?</legend>
         <div class="radio-group">
-          <!-- Radios 0-10 -->
           <label><input type="radio" name="conductor" value="0" required>0</label>
           <label><input type="radio" name="conductor" value="1">1</label>
           <label><input type="radio" name="conductor" value="2">2</label>
@@ -64,7 +120,6 @@
       <fieldset>
         <legend>3. ¿Qué opinás sobre la limpieza?</legend>
         <div class="radio-group">
-          <!-- Radios 0-10 -->
           <label><input type="radio" name="limpieza" value="0" required>0</label>
           <label><input type="radio" name="limpieza" value="1">1</label>
           <label><input type="radio" name="limpieza" value="2">2</label>
@@ -117,7 +172,7 @@
 
       <!-- 6) Recomendación -->
       <fieldset>
-        <legend>6. ¿Recomendarías nuestro servicio?</legend>
+        <legend>6. ¿Recomendarías nuestro servicio a otra persona?</legend>
         <div class="radio-group">
           <label><input type="radio" name="recomendacion" value="0" required>0</label>
           <label><input type="radio" name="recomendacion" value="1">1</label>
