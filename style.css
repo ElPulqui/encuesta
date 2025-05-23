@@ -9,17 +9,17 @@ body{
   padding:30px;
   font-family:'Segoe UI',system-ui,sans-serif;
 
-  /* 🎨 Fondo degradado diagonal (azul → violeta) */
+  /* 🎨 Fondo degradado diagonal Pulqui (azules) */
   background:linear-gradient(130deg,#000080 0%, #3d3dbf 45%, #5252e3 100%);
   background-attachment:fixed;
   color:#000;
 }
 
-/* Tarjeta “glass” */
+/* Tarjeta principal (glass) */
 .card{
   background:rgba(255,255,255,.85);
   backdrop-filter:blur(4px);
-  padding:24px 20px;        /* mobile-first (más compacto)  */
+  padding:24px 20px;          /* mobile-first */
   width:100%;
   max-width:620px;
   border-radius:18px;
@@ -29,7 +29,7 @@ body{
 /* Logo */
 .logo{display:block;width:250px;margin:0 auto 10px;}
 
-/* Títulos */
+/* Títulos y subtítulo */
 h1{
   font-size:28px;
   margin:0 0 6px;
@@ -41,10 +41,15 @@ h1 span{color:#000;}
 
 /* Preguntas */
 fieldset{border:none;margin:26px 0 18px;padding:0}
-legend{font-size:20px;font-weight:600;margin-bottom:10px;color:#000}
+legend  {font-size:20px;font-weight:600;margin-bottom:10px;color:#000}
 
 /* Comentarios */
-label[for="comentarios"]{display:block;margin:24px 0 8px;font-weight:600;font-size:18px}
+label[for="comentarios"]{
+  display:block;
+  margin:24px 0 8px;
+  font-weight:600;
+  font-size:18px;
+}
 textarea{
   width:100%;
   min-height:100px;
@@ -56,20 +61,30 @@ textarea{
 }
 
 /* ———————————————————————————
-   2. Chips 0-10
+   2. Chips radio 0-10
 ——————————————————————————— */
-.chip-group{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start}
-.chip{position:relative;cursor:pointer}
-.chip input{appearance:none;position:absolute;inset:0}
+.chip-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-start;
+}
+.chip{position:relative;cursor:pointer;}
+.chip input{
+  appearance:none;
+  position:absolute;
+  inset:0;
+}
 .chip span{
   display:block;
   padding:8px 14px;
-  border:2px solid #ff5c33;   /* naranja contorno */
+  border:2px solid #ff5c33;       /* naranja contorno */
   border-radius:28px;
   font-size:18px;
   color:#191970;
   transition:.15s;
 }
+/* seleccionado */
 .chip input:checked + span{
   background:#c40011;
   border-color:#c40011;
@@ -77,7 +92,7 @@ textarea{
 }
 
 /* ———————————————————————————
-   3. Botón
+   3. Botón enviar
 ——————————————————————————— */
 .btn{
   background:#d1141e;
@@ -91,7 +106,10 @@ textarea{
   cursor:pointer;
   transition:transform .15s,box-shadow .15s;
 }
-.btn:hover{transform:scale(1.04);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.btn:hover{
+  transform:scale(1.04);
+  box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
 
 /* ———————————————————————————
    4. Alto contraste (opcional)
@@ -101,50 +119,59 @@ textarea{
 }
 
 /* ———————————————————————————
-   5. Breakpoint ≥ 640 px (tablet / small laptop)
+   5. Breakpoint  ≥ 640 px (tablet / laptop)
 ——————————————————————————— */
 @media (min-width:640px){
 
-  body{padding:40px;}                   /* más aire */
-  .card{padding:32px 38px;}             /* vuelve al padding amplio */
+  body{padding:40px;}
+  .card{padding:32px 38px;}
 
-  .chip span{padding:10px 18px;font-size:18px;}
+  .chip span{
+    padding:10px 18px;
+    font-size:18px;
+  }
 
-  .btn{font-size:18px;padding:16px 24px;max-width:320px;margin:24px auto 0;}
+  .btn{
+    font-size:18px;
+    padding:16px 24px;
+    max-width:320px;
+    margin:24px auto 0;
+  }
 }
 
 /* ———————————————————————————
-   6. Breakpoint ≥ 960 px (desktop grande)
+   6. Breakpoint  ≥ 960 px (desktop grande)
 ——————————————————————————— */
 @media (min-width:960px){
-  .card{max-width:720px;}               /* tarjeta más ancha */
+  .card{max-width:720px;}
 }
-/* =========================================================
-   7. Breakpoint móvil angosto  ≤ 480 px
-========================================================= */
+
+/* ———————————————————————————
+   7. Breakpoint  ≤ 480 px (móvil angosto)
+——————————————————————————— */
 @media (max-width:480px){
 
-  /* Tarjeta: sin esquinas redondeadas y ocupa 100 % */
   .card{
     padding:20px 16px;
-    max-width:none;          /* ancha como el viewport */
     border-radius:0;
-    box-shadow:none;         /* sombra innecesaria al full-screen */
+    box-shadow:none;
+    max-width:none;
   }
 
-  /* Títulos un poco más grandes para legibilidad */
   h1{font-size:24px;}
   legend{font-size:18px;}
 
-  /* Chips más grandes (tocar con dedo) y gap menor */
   .chip-group{gap:6px;}
   .chip span{
-    padding:10px 14px;       /* botón cómodo */
+    padding:10px 14px;
     font-size:17px;
   }
 
-  /* Texto del textarea y botón */
-  textarea{font-size:16px;padding:10px;}
+  textarea{
+    font-size:16px;
+    padding:10px;
+  }
+
   .btn{
     font-size:17px;
     padding:14px;
