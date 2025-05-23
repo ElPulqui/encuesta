@@ -1,165 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Encuesta de Satisfacción – El Pulqui</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Encuesta – El Pulqui</title>
+<link rel="stylesheet" href="style.css">
 
-  <!-- Script Supabase: guarda la respuesta en la tabla "encuestas" -->
-  <script defer>
-  // ① TU ENDPOINT Y CLAVE
-  const SUPABASE_URL = 'https://quhdiatnjokidvdbqcqy.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1aGRpYXRuam9raWR2ZGJxY3F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgwMDE0NTIsImV4cCI6MjA2MzU3NzQ1Mn0.DNHifmY14XB342_wA57YDtqS-p_zjz2Wab3d3-5NNyU';
-  const ENDPOINT     = `${SUPABASE_URL}/rest/v1/encuestas`;
+<!-- Supabase: ajustar sólo URL y KEY si cambian -->
+<script defer>
+const SUPABASE_URL = 'https://quhdiatnjokidvdbqcqy.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1aGRpYXRuam9raWR2ZGJxY3F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgwMDE0NTIsImV4cCI6MjA2MzU3NzQ1Mn0.DNHifmY14XB342_wA57YDtqS-p_zjz2Wab3d3-5NNyU';
+const ENDPOINT     = `${SUPABASE_URL}/rest/v1/encuestas`;
 
-  async function enviarEncuesta(ev){
-    ev.preventDefault();
+async function enviarEncuesta(e){
+  e.preventDefault();
+  const datos = Object.fromEntries(new FormData(e.target).entries());
+  ['compra','conductor','limpieza','precio_calidad','servicio_bordo','recomendacion']
+    .forEach(k => datos[k] = Number(datos[k]));
 
-    // Convierte FormData en objeto plano
-    const datos = Object.fromEntries(new FormData(ev.target).entries());
-    // Radios llegan como strings; conviértelos a números
-    ['compra','conductor','limpieza','precio_calidad','servicio_bordo','recomendacion']
-      .forEach(k => datos[k] = Number(datos[k]));
-    // timestamp lo genera la BD, no necesitamos enviarlo
+  const r = await fetch(ENDPOINT, {
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      apikey: SUPABASE_KEY,
+      Authorization:`Bearer ${SUPABASE_KEY}`,
+      Prefer:'return=minimal'
+    },
+    body: JSON.stringify([datos])
+  });
 
-    const respuesta = await fetch(ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        apikey: SUPABASE_KEY,
-        Authorization: `Bearer ${SUPABASE_KEY}`
-      },
-      body: JSON.stringify([{ ...datos }]) // Supabase REST espera array
-    });
-
-    if (respuesta.ok) {
-      window.location = 'gracias.html';
-    } else {
-      alert('No pudimos guardar tu opinión. Intentalo otra vez 🙏');
-    }
+  if(r.ok){ window.location='gracias.html'; }
+  else {
+    console.error(await r.text());
+    alert('Ups! No pudimos guardar tu opinión 😔');
   }
-  </script>
+}
+</script>
 </head>
 
 <body>
-  <div class="container">
-    <div class="logo">
-      <img src="https://github.com/ElPulqui/promos-web/blob/main/logo.png?raw=true" alt="El Pulqui">
-    </div>
+  <main class="card">
+    <img class="logo" src="https://github.com/ElPulqui/promos-web/blob/main/logo.png?raw=true" alt="El Pulqui">
 
-    <h1>Tu opinión mejora nuestro servicio</h1>
-    <p class="intro">Completá esta breve encuesta (menos de 1 minuto) 🙌</p>
+    <h1>Tu opinión <span>mejora</span> nuestro servicio</h1>
+    <p class="sub">Completá esta breve encuesta (menos de 1 minuto).</p>
 
-    <!-- FORMULARIO -->
     <form onsubmit="enviarEncuesta(event)">
 
-      <!-- Reemplazar cada bloque según tu preferencia de diseño -->
-      <!-- 1) Proceso de compra -->
+      <!-- ==== BLOQUE GENERADOR (repite cambiando legend + name) ==== -->
       <fieldset>
         <legend>1. ¿Qué te pareció el proceso de compra?</legend>
-        <div class="radio-group">
-          <!-- radios 0-10 -->
-          <label><input type="radio" name="compra" value="0" required>0</label>
-          <label><input type="radio" name="compra" value="1">1</label>
-          <label><input type="radio" name="compra" value="2">2</label>
-          <label><input type="radio" name="compra" value="3">3</label>
-          <label><input type="radio" name="compra" value="4">4</label>
-          <label><input type="radio" name="compra" value="5">5</label>
-          <label><input type="radio" name="compra" value="6">6</label>
-          <label><input type="radio" name="compra" value="7">7</label>
-          <label><input type="radio" name="compra" value="8">8</label>
-          <label><input type="radio" name="compra" value="9">9</label>
-          <label><input type="radio" name="compra" value="10">10</label>
+        <div class="chip-group">
+          <!-- chips 0-10 -->
+          <!-- las clases .chip y .chip input son para estilo -->
+          <!-- required solo en la primera -->
+          <label class="chip"><input type="radio" name="compra" value="0" required><span>0</span></label>
+          <label class="chip"><input type="radio" name="compra" value="1"><span>1</span></label>
+          <label class="chip"><input type="radio" name="compra" value="2"><span>2</span></label>
+          <label class="chip"><input type="radio" name="compra" value="3"><span>3</span></label>
+          <label class="chip"><input type="radio" name="compra" value="4"><span>4</span></label>
+          <label class="chip"><input type="radio" name="compra" value="5"><span>5</span></label>
+          <label class="chip"><input type="radio" name="compra" value="6"><span>6</span></label>
+          <label class="chip"><input type="radio" name="compra" value="7"><span>7</span></label>
+          <label class="chip"><input type="radio" name="compra" value="8"><span>8</span></label>
+          <label class="chip"><input type="radio" name="compra" value="9"><span>9</span></label>
+          <label class="chip"><input type="radio" name="compra" value="10"><span>10</span></label>
         </div>
       </fieldset>
 
       <!-- 2) Conductor -->
       <fieldset>
         <legend>2. ¿Cómo fue la atención del conductor?</legend>
-        <div class="radio-group">
-          <label><input type="radio" name="conductor" value="0" required>0</label>
-          <label><input type="radio" name="conductor" value="1">1</label>
-          <label><input type="radio" name="conductor" value="2">2</label>
-          <label><input type="radio" name="conductor" value="3">3</label>
-          <label><input type="radio" name="conductor" value="4">4</label>
-          <label><input type="radio" name="conductor" value="5">5</label>
-          <label><input type="radio" name="conductor" value="6">6</label>
-          <label><input type="radio" name="conductor" value="7">7</label>
-          <label><input type="radio" name="conductor" value="8">8</label>
-          <label><input type="radio" name="conductor" value="9">9</label>
-          <label><input type="radio" name="conductor" value="10">10</label>
+        <div class="chip-group">
+          <!-- copia/pega y cambia name="conductor" -->
+          <label class="chip"><input type="radio" name="conductor" value="0" required><span>0</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="1"><span>1</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="2"><span>2</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="3"><span>3</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="4"><span>4</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="5"><span>5</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="6"><span>6</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="7"><span>7</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="8"><span>8</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="9"><span>9</span></label>
+          <label class="chip"><input type="radio" name="conductor" value="10"><span>10</span></label>
         </div>
       </fieldset>
 
       <!-- 3) Limpieza -->
       <fieldset>
         <legend>3. ¿Qué opinás sobre la limpieza?</legend>
-        <div class="radio-group">
-          <label><input type="radio" name="limpieza" value="0" required>0</label>
-         <label><input type="radio" name="limpieza" value="1">1</label>
-          <label><input type="radio" name="limpieza" value="2">2</label>
-          <label><input type="radio" name="limpieza" value="3">3</label>
-          <label><input type="radio" name="limpieza" value="4">4</label>
-          <label><input type="radio" name="limpieza" value="5">5</label>
-          <label><input type="radio" name="limpieza" value="6">6</label>
-          <label><input type="radio" name="limpieza" value="7">7</label>
-          <label><input type="radio" name="limpieza" value="8">8</label>
-          <label><input type="radio" name="limpieza" value="9">9</label>
-          <label><input type="radio" name="limpieza" value="10">10</label>
+        <div class="chip-group">
+          <label class="chip"><input type="radio" name="limpieza" value="0" required><span>0</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="1"><span>1</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="2"><span>2</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="3"><span>3</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="4"><span>4</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="5"><span>5</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="6"><span>6</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="7"><span>7</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="8"><span>8</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="9"><span>9</span></label>
+          <label class="chip"><input type="radio" name="limpieza" value="10"><span>10</span></label>
         </div>
       </fieldset>
 
       <!-- 4) Precio-calidad -->
       <fieldset>
         <legend>4. Relación precio-calidad</legend>
-        <div class="radio-group">
-          <label><input type="radio" name="precio_calidad" value="0" required>0</label>
-          <label><input type="radio" name="precio_calidad" value="1">1</label>
-          <label><input type="radio" name="precio_calidad" value="2">2</label>
-          <label><input type="radio" name="precio_calidad" value="3">3</label>
-          <label><input type="radio" name="precio_calidad" value="4">4</label>
-          <label><input type="radio" name="precio_calidad" value="5">5</label>
-          <label><input type="radio" name="precio_calidad" value="6">6</label>
-          <label><input type="radio" name="precio_calidad" value="7">7</label>
-          <label><input type="radio" name="precio_calidad" value="8">8</label>
-          <label><input type="radio" name="precio_calidad" value="9">9</label>
-          <label><input type="radio" name="precio_calidad" value="10">10</label>
+        <div class="chip-group">
+          <label class="chip"><input type="radio" name="precio_calidad" value="0" required><span>0</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="1"><span>1</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="2"><span>2</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="3"><span>3</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="4"><span>4</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="5"><span>5</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="6"><span>6</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="7"><span>7</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="8"><span>8</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="9"><span>9</span></label>
+          <label class="chip"><input type="radio" name="precio_calidad" value="10"><span>10</span></label>
         </div>
       </fieldset>
 
       <!-- 5) Servicio a bordo -->
       <fieldset>
         <legend>5. Servicio a bordo</legend>
-        <div class="radio-group">
-          <label><input type="radio" name="servicio_bordo" value="0" required>0</label>
-          <label><input type="radio" name="servicio_bordo" value="1">1</label>
-          <label><input type="radio" name="servicio_bordo" value="2">2</label>
-          <label><input type="radio" name="servicio_bordo" value="3">3</label>
-          <label><input type="radio" name="servicio_bordo" value="4">4</label>
-          <label><input type="radio" name="servicio_bordo" value="5">5</label>
-          <label><input type="radio" name="servicio_bordo" value="6">6</label>
-          <label><input type="radio" name="servicio_bordo" value="7">7</label>
-          <label><input type="radio" name="servicio_bordo" value="8">8</label>
-          <label><input type="radio" name="servicio_bordo" value="9">9</label>
-          <label><input type="radio" name="servicio_bordo" value="10">10</label>
+        <div class="chip-group">
+          <label class="chip"><input type="radio" name="servicio_bordo" value="0" required><span>0</span></label>
+           <label class="chip"><input type="radio" name="servicio_bordo" value="1"><span>1</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="2"><span>2</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="3"><span>3</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="4"><span>4</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="5"><span>5</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="6"><span>6</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="7"><span>7</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="8"><span>8</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="9"><span>9</span></label>
+          <label class="chip"><input type="radio" name="servicio_bordo" value="10"><span>10</span></label>
         </div>
       </fieldset>
 
       <!-- 6) Recomendación -->
       <fieldset>
         <legend>6. ¿Recomendarías nuestro servicio?</legend>
-        <div class="radio-group">
-          <label><input type="radio" name="recomendacion" value="0" required>0</label>
-          <label><input type="radio" name="recomendacion" value="1">1</label>
-          <label><input type="radio" name="recomendacion" value="2">2</label>
-          <label><input type="radio" name="recomendacion" value="3">3</label>
-          <label><input type="radio" name="recomendacion" value="4">4</label>
-          <label><input type="radio" name="recomendacion" value="5">5</label>
-          <label><input type="radio" name="recomendacion" value="6">6</label>
-          <label><input type="radio" name="recomendacion" value="7">7</label>
-          <label><input type="radio" name="recomendacion" value="8">8</label>
-          <label><input type="radio" name="recomendacion" value="9">9</label>
-          <label><input type="radio" name="recomendacion" value="10">10</label>
+        <div class="chip-group">
+          <label class="chip"><input type="radio" name="recomendacion" value="0" required><span>0</span></label>
+          <!-- … -->
+          <label class="chip"><input type="radio" name="recomendacion" value="10"><span>10</span></label>
         </div>
       </fieldset>
 
@@ -167,8 +154,8 @@
       <label for="comentarios">Comentarios (opcional)</label>
       <textarea id="comentarios" name="comentarios" rows="4"></textarea>
 
-      <button type="submit">Enviar respuestas</button>
+      <button type="submit" class="btn">Enviar respuestas</button>
     </form>
-  </div>
+  </main>
 </body>
 </html>
