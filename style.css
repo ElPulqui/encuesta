@@ -29,7 +29,7 @@ body{
 /* Logo */
 .logo{
   display:block;
-  width:200px;
+  width:250px;
   margin:0 auto 10px;
 }
 
@@ -88,8 +88,8 @@ textarea{
 }
 .chip span{
   display:block;
-  padding:8px 14px;                  /* antes 6x10 */
-  border:2px solid ##FF0000;              /* contraste mayor */
+  padding: 8px 14px;                  /* antes 6x10 */
+  border:2px solid #FF0000;              /* contraste mayor */
   border-radius:28px;
   font-size:18px;                     /* antes 14 */
   color:#191970;
