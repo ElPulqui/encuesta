@@ -10,7 +10,7 @@ body{
   font-family:'Segoe UI', system-ui, sans-serif;
 
   /* 🎨 Fondo degradado diagonal Pulqui */
-  background:linear-gradient(130deg,#d1141e 0%, #ff5c33 45%, #ffd1c4 100%);
+  background:linear-gradient(130deg,#000080 0%, #3d3dbf 45%, #5252e3 100%);
   background-attachment:fixed;
   color:#000;
 }
