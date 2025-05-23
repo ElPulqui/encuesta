@@ -1,60 +1,77 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
-  margin: 0;
+/* --- Layout general --- */
+body{
+  margin:0;
+  background:#f5f5f6;
+  display:flex;
+  justify-content:center;
+  padding:30px;
+  font-family:'Segoe UI',sans-serif;
+}
+.card{
+  background:#fff;
+  padding:32px 38px;
+  max-width:560px;
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 8px 24px rgba(0,0,0,.07);
+}
+.logo{
+  display:block;
+  width:140px;
+  margin:0 auto 10px;
+}
+h1{
+  font-size:26px;
+  margin:0 0 6px;
+  text-align:center;
+  color:#d1141e;
+}
+h1 span{color:#000;}
+.sub{margin:0 0 24px;text-align:center;color:#555;font-size:14px}
+
+fieldset{border:none;margin:22px 0 16px;padding:0}
+legend{font-size:15px;font-weight:600;margin-bottom:8px;color:#222}
+
+label[for="comentarios"]{display:block;margin:20px 0 6px;font-weight:600}
+textarea{
+  width:100%;min-height:88px;padding:10px;border:1px solid #ccc;
+  border-radius:8px;font-family:inherit;resize:vertical
 }
 
-.container {
-  background: #fff;
-  padding: 30px;
-  max-width: 700px;
-  margin: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* --- Chips radio 0-10 --- */
+.chip-group{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  position:relative;cursor:pointer;
+}
+.chip input{
+  appearance:none;
+  position:absolute;inset:0;
+}
+.chip span{
+  display:block;
+  padding:6px 10px;
+  border:1px solid #ccc;
+  border-radius:20px;
+  font-size:14px;
+  color:#333;
+  transition:.15s;
+}
+.chip input:checked + span{
+  background:#d1141e;
+  border-color:#d1141e;
+  color:#fff;
 }
 
-.logo {
-  text-align: center;
-  margin-bottom: 20px;
+/* --- Botón --- */
+.btn{
+  background:#d1141e;color:#fff;
+  border:none;
+  font-size:16px;
+  padding:12px 24px;
+  border-radius:24px;
+  margin-top:20px;
+  width:100%;
+  cursor:pointer;
+  transition:transform .15s;
 }
-.logo img { width: 160px; }
-
-h1 { color: #d1141e; margin: 0 0 10px; }
-p  { color: #333; }
-
-fieldset {
-  border: none;
-  margin: 20px 0 10px;
-}
-legend { font-weight: bold; margin-bottom: 5px; }
-
-.radio-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-.radio-group label {
-  font-weight: normal;
-  color: #222;
-}
-
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-button {
-  background-color: #d1141e;
-  color: #fff;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-}
-button:hover { background-color: #a50f18; }
+.btn:hover{transform:scale(1.03)}
