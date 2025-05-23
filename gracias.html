@@ -3,30 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>¡Gracias por tu opinión!</title>
-<style>
-body{
-  font-family:'Segoe UI',sans-serif;
-  margin:0;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
 
-  /* mismo degradado */
-  background:linear-gradient(130deg,#d1141e 0%, #ff5c33 45%, #ffd1c4 100%);
-  background-attachment:fixed;
-}
+  <style>
+    /* --- Fondo Pulqui --- */
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-family:'Segoe UI',sans-serif;
 
-.mensaje{
-  background:rgba(255,255,255,.90);
-  backdrop-filter:blur(4px);
-  padding:40px 32px;
-  border-radius:14px;
-  box-shadow:0 8px 24px rgba(0,0,0,.25);
-  max-width:500px;
-}
-</style>
+      background:linear-gradient(130deg,#d1141e 0%, #ff5c33 45%, #ffd1c4 100%);
+      background-attachment:fixed;
+    }
+
+    /* --- Tarjeta glass --- */
+    .mensaje{
+      background:rgba(255,255,255,.90);
+      backdrop-filter:blur(6px);
+      padding:48px 36px;
+      border-radius:16px;
+      max-width:480px;
+      box-shadow:0 10px 28px rgba(0,0,0,.25);
+    }
+
+    .icon  {font-size:50px;margin-bottom:18px;}
+    h2     {color:#d1141e;margin:0 0 20px;}
+    p      {font-size:16px;color:#333;margin:10px 0;}
+    .logo  {margin-top:30px;}
+    .logo img{width:130px;opacity:.85}
+  </style>
 </head>
 
 <body>
@@ -35,9 +43,8 @@ body{
     <h2>¡Gracias por ser parte de este viaje! 🚍</h2>
     <p>Cada opinión cuenta y cada respuesta suma.</p>
     <p>Seguimos mejorando, gracias a vos.</p>
-    <p style="margin-top: 26px;">🛫 ¡Hasta la próxima!</p>
+    <p style="margin-top:28px;">🛫 ¡Hasta la próxima!</p>
 
-    <!-- Logo opcional -->
     <div class="logo">
       <img src="https://github.com/ElPulqui/promos-web/blob/main/logo.png?raw=true" alt="El Pulqui">
     </div>
