@@ -1,57 +1,142 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Encuesta de Satisfacción - El Pulqui</title>
+  <title>Encuesta de Satisfacción – El Pulqui</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
+    <!-- Logo -->
     <div class="logo">
-      <img src="https://github.com/ElPulqui/promos-web/blob/main/logo.png?raw=true" alt="Logo">
+      <img src="https://github.com/ElPulqui/promos-web/blob/main/logo.png?raw=true" alt="El Pulqui">
     </div>
+
     <h1>Tu opinión mejora nuestro servicio</h1>
-    <p>Completá esta breve encuesta. Solo te tomará 1 minuto 🙌</p>
-    <form action="https://script.google.com/macros/s/AKfycbzS21wTfIm0qdzmso2IQw8Vd5U-XbGVrlA0VlyuQt0F7O1iKF3wvAHvqDZ9_z2IqCOE/exec" method="POST">
-      
-      <label>¿Qué te pareció el proceso de compra?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="0" required> 0</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="1" required> 1</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="2" required> 2</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="3" required> 3</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="4" required> 4</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="5" required> 5</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="6" required> 6</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="7" required> 7</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="8" required> 8</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="9" required> 9</label><label><input type="radio" name="¿qué_te_pareció_el_proceso_de_compra?" value="10" required> 10</label>
-      </div>
-    
+    <p>Completá esta breve encuesta (menos de 1 minuto) 🙌</p>
 
-      <label>¿Cómo fue la atención del conductor?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="0" required> 0</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="1" required> 1</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="2" required> 2</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="3" required> 3</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="4" required> 4</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="5" required> 5</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="6" required> 6</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="7" required> 7</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="8" required> 8</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="9" required> 9</label><label><input type="radio" name="¿cómo_fue_la_atención_del_conductor?" value="10" required> 10</label>
-      </div>
-    
+    <!-- FORMULARIO -->
+    <form action="https://script.google.com/macros/s/AKfycbzBGoJj4UOfIoW1u1H2YNIQXGifV_QaOUmu631GvOiY1UmOKP71slYkhyqtrGp_BpbI/exec" method="POST">
 
-      <label>¿Qué opinás sobre la limpieza?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="0" required> 0</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="1" required> 1</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="2" required> 2</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="3" required> 3</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="4" required> 4</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="5" required> 5</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="6" required> 6</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="7" required> 7</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="8" required> 8</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="9" required> 9</label><label><input type="radio" name="¿qué_opinás_sobre_la_limpieza?" value="10" required> 10</label>
-      </div>
-    
+      <!-- GENERADOR DE GRUPOS RADIO 0-10 -->
+      <!-- 1) Proceso de compra -->
+      <fieldset>
+        <legend>1. ¿Qué te pareció el proceso de compra?</legend>
+        <div class="radio-group">
+          <!-- radios del 0 al 10 -->
+          <!-- puedes duplicar este bloque según necesites -->
+          <!-- Se repite con un for en backend normalmente, aquí lo ponemos manualmente -->
+          <label><input type="radio" name="compra" value="0" required>0</label>
+          <label><input type="radio" name="compra" value="1">1</label>
+          <label><input type="radio" name="compra" value="2">2</label>
+          <label><input type="radio" name="compra" value="3">3</label>
+          <label><input type="radio" name="compra" value="4">4</label>
+          <label><input type="radio" name="compra" value="5">5</label>
+          <label><input type="radio" name="compra" value="6">6</label>
+          <label><input type="radio" name="compra" value="7">7</label>
+          <label><input type="radio" name="compra" value="8">8</label>
+          <label><input type="radio" name="compra" value="9">9</label>
+          <label><input type="radio" name="compra" value="10">10</label>
+        </div>
+      </fieldset>
 
-      <label>Relación precio-calidad</label>
-      <div class="radio-group">
-        <label><input type="radio" name="relación_precio-calidad" value="0" required> 0</label><label><input type="radio" name="relación_precio-calidad" value="1" required> 1</label><label><input type="radio" name="relación_precio-calidad" value="2" required> 2</label><label><input type="radio" name="relación_precio-calidad" value="3" required> 3</label><label><input type="radio" name="relación_precio-calidad" value="4" required> 4</label><label><input type="radio" name="relación_precio-calidad" value="5" required> 5</label><label><input type="radio" name="relación_precio-calidad" value="6" required> 6</label><label><input type="radio" name="relación_precio-calidad" value="7" required> 7</label><label><input type="radio" name="relación_precio-calidad" value="8" required> 8</label><label><input type="radio" name="relación_precio-calidad" value="9" required> 9</label><label><input type="radio" name="relación_precio-calidad" value="10" required> 10</label>
-      </div>
-    
+      <!-- 2) Atención del conductor -->
+      <fieldset>
+        <legend>2. ¿Cómo fue la atención del conductor?</legend>
+        <div class="radio-group">
+          <!-- Radios 0-10 -->
+          <label><input type="radio" name="conductor" value="0" required>0</label>
+          <label><input type="radio" name="conductor" value="1">1</label>
+          <label><input type="radio" name="conductor" value="2">2</label>
+          <label><input type="radio" name="conductor" value="3">3</label>
+          <label><input type="radio" name="conductor" value="4">4</label>
+          <label><input type="radio" name="conductor" value="5">5</label>
+          <label><input type="radio" name="conductor" value="6">6</label>
+          <label><input type="radio" name="conductor" value="7">7</label>
+          <label><input type="radio" name="conductor" value="8">8</label>
+          <label><input type="radio" name="conductor" value="9">9</label>
+          <label><input type="radio" name="conductor" value="10">10</label>
+        </div>
+      </fieldset>
 
-      <label>Servicio a bordo</label>
-      <div class="radio-group">
-        <label><input type="radio" name="servicio_a_bordo" value="0" required> 0</label><label><input type="radio" name="servicio_a_bordo" value="1" required> 1</label><label><input type="radio" name="servicio_a_bordo" value="2" required> 2</label><label><input type="radio" name="servicio_a_bordo" value="3" required> 3</label><label><input type="radio" name="servicio_a_bordo" value="4" required> 4</label><label><input type="radio" name="servicio_a_bordo" value="5" required> 5</label><label><input type="radio" name="servicio_a_bordo" value="6" required> 6</label><label><input type="radio" name="servicio_a_bordo" value="7" required> 7</label><label><input type="radio" name="servicio_a_bordo" value="8" required> 8</label><label><input type="radio" name="servicio_a_bordo" value="9" required> 9</label><label><input type="radio" name="servicio_a_bordo" value="10" required> 10</label>
-      </div>
-    
+      <!-- 3) Limpieza -->
+      <fieldset>
+        <legend>3. ¿Qué opinás sobre la limpieza?</legend>
+        <div class="radio-group">
+          <!-- Radios 0-10 -->
+          <label><input type="radio" name="limpieza" value="0" required>0</label>
+          <label><input type="radio" name="limpieza" value="1">1</label>
+          <label><input type="radio" name="limpieza" value="2">2</label>
+          <label><input type="radio" name="limpieza" value="3">3</label>
+          <label><input type="radio" name="limpieza" value="4">4</label>
+          <label><input type="radio" name="limpieza" value="5">5</label>
+          <label><input type="radio" name="limpieza" value="6">6</label>
+          <label><input type="radio" name="limpieza" value="7">7</label>
+          <label><input type="radio" name="limpieza" value="8">8</label>
+          <label><input type="radio" name="limpieza" value="9">9</label>
+          <label><input type="radio" name="limpieza" value="10">10</label>
+        </div>
+      </fieldset>
 
-      <label>¿Recomendarías nuestro servicio?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="0" required> 0</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="1" required> 1</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="2" required> 2</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="3" required> 3</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="4" required> 4</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="5" required> 5</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="6" required> 6</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="7" required> 7</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="8" required> 8</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="9" required> 9</label><label><input type="radio" name="¿recomendarías_nuestro_servicio?" value="10" required> 10</label>
-      </div>
-    
-      <label>Comentarios (opcional)</label>
-      <textarea name="comentarios"></textarea>
+      <!-- 4) Relación precio-calidad -->
+      <fieldset>
+        <legend>4. Relación precio-calidad</legend>
+        <div class="radio-group">
+          <label><input type="radio" name="precio_calidad" value="0" required>0</label>
+          <label><input type="radio" name="precio_calidad" value="1">1</label>
+          <label><input type="radio" name="precio_calidad" value="2">2</label>
+          <label><input type="radio" name="precio_calidad" value="3">3</label>
+          <label><input type="radio" name="precio_calidad" value="4">4</label>
+          <label><input type="radio" name="precio_calidad" value="5">5</label>
+          <label><input type="radio" name="precio_calidad" value="6">6</label>
+          <label><input type="radio" name="precio_calidad" value="7">7</label>
+          <label><input type="radio" name="precio_calidad" value="8">8</label>
+          <label><input type="radio" name="precio_calidad" value="9">9</label>
+          <label><input type="radio" name="precio_calidad" value="10">10</label>
+        </div>
+      </fieldset>
+
+      <!-- 5) Servicio a bordo -->
+      <fieldset>
+        <legend>5. Servicio a bordo</legend>
+        <div class="radio-group">
+          <label><input type="radio" name="servicio_bordo" value="0" required>0</label>
+          <label><input type="radio" name="servicio_bordo" value="1">1</label>
+          <label><input type="radio" name="servicio_bordo" value="2">2</label>
+          <label><input type="radio" name="servicio_bordo" value="3">3</label>
+          <label><input type="radio" name="servicio_bordo" value="4">4</label>
+          <label><input type="radio" name="servicio_bordo" value="5">5</label>
+          <label><input type="radio" name="servicio_bordo" value="6">6</label>
+          <label><input type="radio" name="servicio_bordo" value="7">7</label>
+          <label><input type="radio" name="servicio_bordo" value="8">8</label>
+          <label><input type="radio" name="servicio_bordo" value="9">9</label>
+          <label><input type="radio" name="servicio_bordo" value="10">10</label>
+        </div>
+      </fieldset>
+
+      <!-- 6) Recomendación -->
+      <fieldset>
+        <legend>6. ¿Recomendarías nuestro servicio?</legend>
+        <div class="radio-group">
+          <label><input type="radio" name="recomendacion" value="0" required>0</label>
+          <label><input type="radio" name="recomendacion" value="1">1</label>
+          <label><input type="radio" name="recomendacion" value="2">2</label>
+          <label><input type="radio" name="recomendacion" value="3">3</label>
+          <label><input type="radio" name="recomendacion" value="4">4</label>
+          <label><input type="radio" name="recomendacion" value="5">5</label>
+          <label><input type="radio" name="recomendacion" value="6">6</label>
+          <label><input type="radio" name="recomendacion" value="7">7</label>
+          <label><input type="radio" name="recomendacion" value="8">8</label>
+          <label><input type="radio" name="recomendacion" value="9">9</label>
+          <label><input type="radio" name="recomendacion" value="10">10</label>
+        </div>
+      </fieldset>
+
+      <!-- Comentarios -->
+      <label for="comentarios">Comentarios (opcional)</label>
+      <textarea name="comentarios" id="comentarios" rows="4"></textarea>
+
       <button type="submit">Enviar respuestas</button>
     </form>
   </div>
