@@ -48,7 +48,7 @@ async function enviarEncuesta(e){
 
       <!-- ==== BLOQUE GENERADOR (repite cambiando legend + name) ==== -->
       <fieldset>
-        <legend>1. ¿Qué te pareció el proceso de compra?</legend>
+        <legend>1. ¿Qué tan ágil y claro te resultó comprar tu pasaje?</legend>
         <div class="chip-group">
           <!-- chips 0-10 -->
           <!-- las clases .chip y .chip input son para estilo -->
@@ -69,7 +69,7 @@ async function enviarEncuesta(e){
 
       <!-- 2) Conductor -->
       <fieldset>
-        <legend>2. ¿Cómo fue la atención del conductor?</legend>
+        <legend>2. ¿Qué tan cordial y profesional sentiste al conductor durante el viaje?</legend>
         <div class="chip-group">
           <!-- copia/pega y cambia name="conductor" -->
           <label class="chip"><input type="radio" name="conductor" value="0" required><span>0</span></label>
@@ -88,7 +88,7 @@ async function enviarEncuesta(e){
 
       <!-- 3) Limpieza -->
       <fieldset>
-        <legend>3. ¿Qué opinás sobre la limpieza?</legend>
+        <legend>3. Pensando en butacas, baño y pasillos, ¿qué tan limpio encontraste el micro?</legend>
         <div class="chip-group">
           <label class="chip"><input type="radio" name="limpieza" value="0" required><span>0</span></label>
           <label class="chip"><input type="radio" name="limpieza" value="1"><span>1</span></label>
@@ -106,7 +106,7 @@ async function enviarEncuesta(e){
 
       <!-- 4) Precio-calidad -->
       <fieldset>
-        <legend>4. Relación precio-calidad</legend>
+        <legend>4. Según tu experiencia completa, ¿cuánto valor recibiste por lo que pagaste?</legend>
         <div class="chip-group">
           <label class="chip"><input type="radio" name="precio_calidad" value="0" required><span>0</span></label>
           <label class="chip"><input type="radio" name="precio_calidad" value="1"><span>1</span></label>
@@ -124,7 +124,7 @@ async function enviarEncuesta(e){
 
       <!-- 5) Servicio a bordo -->
       <fieldset>
-        <legend>5. Servicio a bordo</legend>
+        <legend>5. ¿Qué tan útil y entretenido te resultó el servicio a bordo (cargadores, TV, música, snack)?</legend>
         <div class="chip-group">
           <label class="chip"><input type="radio" name="servicio_bordo" value="0" required><span>0</span></label>
            <label class="chip"><input type="radio" name="servicio_bordo" value="1"><span>1</span></label>
@@ -142,7 +142,7 @@ async function enviarEncuesta(e){
 
       <!-- 6) Recomendación -->
       <fieldset>
-        <legend>6. ¿Recomendarías nuestro servicio?</legend>
+        <legend>6. Si un amigo o familiar viaja mañana, ¿con qué probabilidad le sugerirías viajar con El Pulqui?</legend>
         <div class="chip-group">
           <label class="chip"><input type="radio" name="recomendacion" value="0" required><span>0</span></label>
           <label class="chip"><input type="radio" name="recomendacion" value="1"><span>1</span></label>
