@@ -150,38 +150,23 @@ textarea{
    7. Breakpoint  ≤ 480 px (móvil angosto)
 ——————————————————————————— */
 @media (max-width:480px){
-/* Evita tarjeta estirada */
   body{
-    display:block;
-    padding:20px 10px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:20px 12px;
   }
+
   .card{
-    padding:18px 14px;
-    border-radius:0;
+    width:100%;
+    max-width:430px;
+    padding:20px 16px;
+    border-radius:12px;
     box-shadow:none;
-    max-width:none;
-    max-height:calc(100vh - 40px);
-    overflow-y:auto;
   }
 
-  h1{font-size:24px;}
-  legend{font-size:18px;}
-
-  /* chips compactos */
-  .chip-group{gap:4px; flex-wrap:nowrap;}      /* prohíbe el salto de línea */
-  .chip span{
-    padding:6px 10px;                          /* menos ancho */
-    font-size:15px;
-  }
-
-  textarea{
-    font-size:16px;
-    padding:10px;
-  }
-
-  .btn{
-    font-size:17px;
-    padding:14px;
-    margin-top:24px;
-  }
+  .chip-group{gap:6px;}
+  .chip span{padding:10px 14px;font-size:17px;}
+  textarea{font-size:16px;padding:10px;}
+  .btn{font-size:17px;padding:14px;margin-top:24px;}
 }
