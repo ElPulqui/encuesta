@@ -167,10 +167,11 @@ textarea{
   h1{font-size:24px;}
   legend{font-size:18px;}
 
-  .chip-group{gap:6px;}
+  /* chips compactos */
+  .chip-group{gap:4px; flex-wrap:nowrap;}      /* prohíbe el salto de línea */
   .chip span{
-    padding:10px 14px;
-    font-size:17px;
+    padding:6px 10px;                          /* menos ancho */
+    font-size:15px;
   }
 
   textarea{
